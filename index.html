@@ -136,20 +136,29 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+              <strong>Submit Success!</strong> Your Message Already Send.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="Portfolio-Contact-Form">
               <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="Name" aria-describedby="Name" />
+                <input type="text" class="form-control" id="Name" aria-describedby="Name" name="name" />
               </div>
               <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" aria-describedby="Email" />
+                <input type="email" class="form-control" id="Email" aria-describedby="Email" name="email" />
               </div>
               <div class="mb-3">
                 <label for="Message" class="form-label">Message</label>
-                <textarea class="form-control" id="Message" rows="3"></textarea>
+                <textarea class="form-control" id="Message" rows="3" name="message"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span>
+              </button>
             </form>
           </div>
         </div>
@@ -170,5 +179,34 @@
     </footer>
     <!-- End Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwizAJSJfjHpX0b8kNP6Hzzl4FlQRx8g7mfERXROYARK3gSQ3Tiw0vfqRIpxUGtEWUuIw/exec";
+      const form = document.forms["Portfolio-Contact-Form"];
+      const btnSubmit = document.querySelector(".btn-submit");
+      const btnLoading = document.querySelector(".btn-loading");
+      const myAlert = document.querySelector(".my-alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // when submit button is clicked
+        // show loading button, remove the submit button
+        btnLoading.classList.toggle("d-none");
+        btnSubmit.classList.toggle("d-none");
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            // show loading button, remove the submit button
+            btnLoading.classList.toggle("d-none");
+            btnSubmit.classList.toggle("d-none");
+            // show alert
+            myAlert.classList.toggle("d-none");
+            // reset form
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
