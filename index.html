@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- my css -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body id="home">
@@ -24,7 +29,10 @@
               <a class="nav-link" href="#about">About </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#project">Pictures</a>
+              <a class="nav-link" href="#project">Card</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
@@ -39,7 +47,7 @@
     <section class="jumbotron text-center">
       <img src="Images/zeta.jpg" alt="zeta" width="200" class="rounded-circle img-thumbnail" />
       <h1 class="display-4"><b>REDSHiFT</b></h1>
-      <p class="lead"><b>Student</b></p>
+      <p class="lead"><b></b></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
@@ -52,7 +60,7 @@
 
     <!-- About -->
     <section id="about">
-      <div class="container">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="20" data-aos-mirror="true">
         <div class="row text-center mb-4">
           <div class="col">
             <h2>About Me</h2>
@@ -83,12 +91,12 @@
       <div class="container">
         <div class="row text-center mb-4">
           <div class="col">
-            <h2>Random Pictures</h2>
+            <h2>Anime Card</h2>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="30" data-aos-mirror="true">
               <img src="Images/call1.jpg" class="card-img-top" alt="calli" />
               <div class="card-body">
                 <p class="card-text">Character : Calliope Mori from Hololive English (Myth)</p>
@@ -97,7 +105,7 @@
             </div>
           </div>
           <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="30" data-aos-mirror="true">
               <img src="Images/mei.jpg" class="card-img-top" alt="mei" />
               <div class="card-body">
                 <p class="card-text">Character : Raiden Mei from Honkai Impact 3</p>
@@ -106,7 +114,7 @@
             </div>
           </div>
           <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="30" data-aos-mirror="true">
               <img src="Images/mio.png" class="card-img-top" alt="mio" />
               <div class="card-body">
                 <p class="card-text">Character : Ookami Mio from Hololive Gamer JP</p>
@@ -125,6 +133,44 @@
       </svg>
     </section>
     <!-- End project -->
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="row text-center mb-4">
+          <div class="col">
+            <h2>Gallery</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4" data-aos-mirror="false">
+            <a href="#"></a>
+            <img src="Images/Gallery/hakos.jpg" alt="hakos" class="img-fluid gallery-img" />
+          </div>
+          <div class="col-md-4" data-aos-mirror="false">
+            <a href="#"></a>
+            <img src="Images/Gallery/kroni.jpg" alt="kroni" class="img-fluid gallery-img" />
+          </div>
+          <div class="col-md-4" data-aos-mirror="false">
+            <a href="#"></a>
+            <img src="Images/Gallery/mumei.jpg" alt="mumei" class="img-fluid gallery-img" />
+          </div>
+          <div class="col-md-4" data-aos-mirror="false">
+            <a href="#"></a>
+            <img src="Images/Gallery/fauna.jpg" alt="fauna" class="img-fluid gallery-img" />
+          </div>
+          <div class="col-md-4" data-aos-mirror="false">
+            <a href="#"></a>
+            <img src="Images/Gallery/sana.jpg" alt="sana" class="img-fluid gallery-img" />
+          </div>
+        </div>
+      </div>
+      <p></p>
+      <br />
+      <br />
+      <br />
+    </section>
+    <!-- End Gallery -->
 
     <!-- contact -->
     <section id="contact">
@@ -179,6 +225,29 @@
     </footer>
     <!-- End Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      const galleryImage = document.querySelectorAll(".gallery-img");
+
+      galleryImage.forEach((img, i) => {
+        img.dataset.aos = "fade-down";
+        img.dataset.aosDelay = i * 100;
+        img.dataset.aosDuration = 1000;
+      });
+
+      AOS.init();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to(".lead", { duration: 1, delay: 0.5, text: "Student" });
+      gsap.from(".jumbotron img", { duration: 2, rotateY: 360, opacity: 0 });
+      gsap.from(".navbar", { duration: 1.5, y: "-100%", opacity: 0 });
+      gsap.from(".display-4", { duration: 1, x: -50, opacity: 0, delay: 0.5 });
+    </script>
 
     <script>
       const scriptURL = "https://script.google.com/macros/s/AKfycbwizAJSJfjHpX0b8kNP6Hzzl4FlQRx8g7mfERXROYARK3gSQ3Tiw0vfqRIpxUGtEWUuIw/exec";
